@@ -185,27 +185,11 @@ p { margin: 0 0 1em; }
 .btn-outline:hover { background: var(--navy); color: #fff; }
 
 /* Contacto */
-.contact { display: grid; gap: 2rem; }
+.contact { max-width: 640px; }
 .contact-list { list-style: none; padding: 0; margin: 1.5rem 0 0; }
 .contact-list li { padding: .7rem 0; border-bottom: 1px solid var(--line); }
 .contact-list small { color: var(--muted); }
 
-.contact-form .field { margin-bottom: 1rem; }
-.field-row { display: grid; gap: 0 1rem; }
-.contact-form label { display: block; font-weight: 600; font-size: .92rem; margin-bottom: .35rem; }
-.contact-form input, .contact-form select, .contact-form textarea {
-  width: 100%; font: inherit; font-size: 1rem; /* 16px evita zoom en iOS */
-  padding: .75rem .9rem; border: 1px solid #cdd4e0; border-radius: 10px; background: #fff; color: var(--text);
-}
-.contact-form textarea { resize: vertical; }
-.contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { border-color: var(--navy-2); outline: 2px solid rgba(19, 49, 92, .2); }
-.contact-form .invalid { border-color: #d93025; }
-.check { display: flex !important; gap: .6rem; align-items: flex-start; font-weight: 400 !important; margin-bottom: 1.25rem !important; }
-.check input { width: 20px; height: 20px; margin-top: .2rem; flex: none; }
-.hp { position: absolute; left: -9999px; }
-.form-status { margin: .8rem 0 0; font-weight: 600; min-height: 1.5em; }
-.form-status.ok { color: #137333; }
-.form-status.error { color: #d93025; }
 
 /* ---------- Pie ---------- */
 .site-footer { background: var(--navy); color: #b9c5d8; padding: 3rem 0 1rem; font-size: .95rem; }
@@ -279,7 +263,6 @@ dialog::backdrop { background: rgba(6, 18, 36, .75); }
 
   .section { padding: 5.5rem 0; }
   .services { grid-template-columns: repeat(3, 1fr); }
-  .contact { grid-template-columns: 1fr 1.2fr; gap: 3rem; align-items: start; }
 
   /* En escritorio los botones fijos pasan a ser burbujas flotantes */
   .float-actions {
