@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- Archivo generado por build.js a partir de src/. No lo edites a mano: edita src/ y ejecuta "npm run build". -->
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -85,13 +84,6 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Saltar al contenido</a>
-
-  <!-- Aviso de idioma: se muestra con JS si el navegador prefiere otro idioma de la web. No guarda nada. -->
-  <div class="lang-hint" id="lang-hint" hidden>
-    <p class="lang-hint-msg" data-lang="ca" lang="ca" hidden>Aquesta web també està en català. <a href="ca/" hreflang="ca">Veure-la en català →</a></p>
-    <p class="lang-hint-msg" data-lang="en" lang="en" hidden>This website is also available in English. <a href="en/" hreflang="en">View in English →</a></p>
-    <button class="lang-hint-close" type="button" aria-label="Cerrar">×</button>
-  </div>
 
   <!-- ========== CABECERA ========== -->
   <header class="site-header" id="top">
@@ -363,6 +355,31 @@
     <h2 id="t-cookies">Política de cookies</h2>
     <p>Esta web no utiliza cookies propias ni de terceros, ni de analítica ni de publicidad, y no guarda ningún dato en tu navegador.</p>
     <p>Si en el futuro se añaden herramientas de analítica, se actualizará esta política y se solicitará tu consentimiento.</p>
+  </dialog>
+
+  <!-- ========== POP-UP DE IDIOMA ==========
+       Se muestra si el navegador del visitante está en catalán o inglés.
+       Usa navigator.languages y no guarda nada (ni cookies ni localStorage). -->
+  <dialog class="lang-popup" id="lang-popup" aria-labelledby="lang-popup-ca">
+    <button class="dialog-close" type="button" aria-label="Cerrar">×</button>
+    <div class="lang-popup-msg" data-lang="ca" lang="ca" hidden>
+      <p class="lang-popup-icon" aria-hidden="true">💬</p>
+      <h2 id="lang-popup-ca">Et podem atendre en català</h2>
+      <p>Aquesta web també està en català.</p>
+      <div class="lang-popup-actions">
+        <a class="btn btn-primary" href="ca/" hreflang="ca" autofocus>Veure-la en català</a>
+        <button class="btn btn-outline" type="button" data-close>Continuar en castellà</button>
+      </div>
+    </div>
+    <div class="lang-popup-msg" data-lang="en" lang="en" hidden>
+      <p class="lang-popup-icon" aria-hidden="true">💬</p>
+      <h2 id="lang-popup-en">We can help you in English</h2>
+      <p>This website is also available in English.</p>
+      <div class="lang-popup-actions">
+        <a class="btn btn-primary" href="en/" hreflang="en" autofocus>View in English</a>
+        <button class="btn btn-outline" type="button" data-close>Stay in Spanish</button>
+      </div>
+    </div>
   </dialog>
 
   <script src="script.js" defer></script>

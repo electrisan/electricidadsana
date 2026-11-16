@@ -23,22 +23,6 @@
     });
   }
 
-  // ---------- Aviso de idioma ----------
-  // Solo existe en la página del idioma por defecto. Usa el idioma del navegador
-  // (navigator.languages) y no guarda nada: ni cookies ni localStorage.
-  var hint = document.getElementById('lang-hint');
-  if (hint) {
-    var pageLang = document.documentElement.lang;
-    var prefs = navigator.languages || [navigator.language || ''];
-    for (var i = 0; i < prefs.length; i++) {
-      var code = String(prefs[i]).toLowerCase().split('-')[0];
-      if (code === pageLang) break; // prefiere el idioma de esta página: no mostrar nada
-      var msg = hint.querySelector('.lang-hint-msg[data-lang="' + code + '"]');
-      if (msg) { msg.hidden = false; hint.hidden = false; break; }
-    }
-    hint.querySelector('.lang-hint-close').addEventListener('click', function () { hint.hidden = true; });
-  }
-
   // ---------- Diálogos (legales y visor) ----------
   function openDialog(d) {
     if (!d) return;
@@ -62,6 +46,30 @@
     // Cerrar al pulsar fuera del contenido
     d.addEventListener('click', function (e) { if (e.target === d) closeDialog(d); });
   });
+
+  // ---------- Pop-up de idioma ----------
+  // Solo existe en la página en castellano. Si el idioma preferido del navegador
+  // es catalán o inglés, ofrece esa versión. No guarda nada: ni cookies ni localStorage,
+  // así que si el visitante lo cierra puede volver a verlo en otra visita.
+  var langPopup = document.getElementById('lang-popup');
+  if (langPopup) {
+    var pageLang = document.documentElement.lang;
+    var prefs = navigator.languages || [navigator.language || ''];
+    for (var i = 0; i < prefs.length; i++) {
+      var code = String(prefs[i]).toLowerCase().split('-')[0];
+      if (code === pageLang) break; // prefiere castellano: no mostrar nada
+      var msg = langPopup.querySelector('.lang-popup-msg[data-lang="' + code + '"]');
+      if (msg) {
+        msg.hidden = false;
+        langPopup.setAttribute('aria-labelledby', 'lang-popup-' + code);
+        setTimeout(function () { openDialog(langPopup); }, 600);
+        break;
+      }
+    }
+    langPopup.querySelectorAll('[data-close]').forEach(function (btn) {
+      btn.addEventListener('click', function () { closeDialog(langPopup); });
+    });
+  }
 
   // Visor de fotos
   var lightbox = document.getElementById('lightbox');

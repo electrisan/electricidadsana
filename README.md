@@ -2,9 +2,9 @@
 
 Web de **Electricidad Sana**, electricista en Barcelona → **https://electricidadsana.es**
 
-Web estática en tres idiomas (castellano, català, English), generada desde una plantilla con un script de Node **sin dependencias**. HTML, CSS y JavaScript puro, sin cookies ni almacenamiento en el navegador. Se publica con GitHub Pages desde la rama `main`.
+Web estática en tres idiomas: HTML, CSS y JavaScript puro, sin frameworks, sin dependencias, sin paso de compilación y sin cookies. Se publica con GitHub Pages desde la rama `main`.
 
-| Idioma | URL | Archivo generado |
+| Idioma | URL | Archivo |
 |---|---|---|
 | Castellano (por defecto) | `/` | `index.html` |
 | Català | `/ca/` | `ca/index.html` |
@@ -12,83 +12,64 @@ Web estática en tres idiomas (castellano, català, English), generada desde una
 
 ## Estructura
 
-```
-src/                      ← lo que se edita
-├── template.html         plantilla de la página (estructura común a todos los idiomas)
-├── site.json             datos comunes: empresa, teléfono, enlaces, barrios, reseñas…
-└── i18n/
-    ├── es.json           textos en castellano (idioma de referencia)
-    ├── ca.json           textos en catalán
-    └── en.json           textos en inglés
+| Archivo | Contenido |
+|---|---|
+| `index.html`, `ca/index.html`, `en/index.html` | Una página por idioma, con sus textos legales (ventanas `<dialog>`) y datos estructurados para Google (`application/ld+json`) |
+| `styles.css` | Estilos comunes, mobile-first. Colores y medidas en variables `:root` |
+| `script.js` | JS común: menú móvil, visor de fotos, ventanas legales, animaciones y pop-up de idioma |
+| `img/` | Logo, favicon, imagen para redes (`og-image.jpg`) y fotos de trabajos |
+| `404.html` | Página de error (en los tres idiomas) |
+| `robots.txt`, `sitemap.xml` | Indexación; el sitemap enlaza las tres versiones con `hreflang` |
+| `CNAME`, `.nojekyll` | Configuración de GitHub Pages |
 
-build.js                  generador: src/ → index.html, ca/, en/, sitemap.xml
-styles.css, script.js     estilos y JS (comunes, se editan directamente)
-img/                      logo, favicon, imagen para redes y fotos de trabajos
-index.html, ca/, en/      ⚠ GENERADOS: no editar a mano
-sitemap.xml               ⚠ GENERADO
-404.html, robots.txt, CNAME, .nojekyll   estáticos
-```
+Las páginas de `ca/` y `en/` usan rutas relativas con `../` para los archivos comunes (`../styles.css`, `../img/…`).
 
-## Desarrollo
-
-Requisito: Node 18 o superior.
+## Desarrollo local
 
 ```bash
 git clone https://github.com/electrisan/electricidadsana.git
 cd electricidadsana
-npm run dev
+python3 -m http.server 8000      # y abrir http://localhost:8000
 ```
 
-`npm run dev` genera la web, abre un servidor local (browser-sync, descargado al vuelo con `npx`) y, al guardar cualquier archivo de `src/`, regenera y recarga el navegador. La dirección *External* que muestra sirve para probar en el móvil dentro de la misma wifi.
-
-| Comando | Qué hace |
-|---|---|
-| `npm run build` | Genera las páginas una vez |
-| `npm run watch` | Regenera al guardar, sin servidor |
-| `npm run dev` | Regenera al guardar + servidor con recarga automática |
-
-Si el generador encuentra un error (JSON mal escrito, un dato que falta en la plantilla, o un idioma con claves distintas a `es.json`), lo indica con el archivo y la clave.
+Con recarga automática al guardar: extensión **Live Server** de VS Code (*Open with Live Server*). Conviene usar un servidor y no abrir el archivo con doble clic, para que los enlaces entre idiomas (`ca/`, `en/`) funcionen igual que en la web real.
 
 ## Publicar
 
-Las páginas generadas se suben al repositorio junto con `src/`:
+Cada `git push` a `main` se publica automáticamente en 1–2 minutos (estado en la pestaña **Actions**). Si no ves el cambio, recarga sin caché (Ctrl+F5).
 
-```bash
-npm run build
-git add -A && git commit -m "Descripción del cambio" && git push
-```
+## Idiomas
 
-GitHub Pages publica en 1–2 minutos (estado en la pestaña **Actions**). Si no ves el cambio, recarga sin caché (Ctrl+F5).
+**Cada cambio de contenido se hace en las tres páginas.** La estructura HTML es la misma en las tres; solo cambian los textos, las rutas (`../` en `ca/` y `en/`) y estos elementos de la cabecera de cada página:
 
-## Cómo se editan las cosas
+- `<html lang="…">`, `<title>`, `<meta name="description">` y las etiquetas `og:`.
+- `<link rel="canonical">`, apuntando a la URL de esa página.
+- Los `<link rel="alternate" hreflang="…">`, iguales en las tres páginas: cada una enlaza a las tres versiones más `x-default`.
+- El selector de idioma (`.lang-switch`): `aria-current="true"` en el idioma de la página.
 
-**Textos.** En `src/i18n/<idioma>.json`. Los tres archivos deben tener las mismas claves; las listas de elementos (servicios, fotos) deben tener el mismo número de elementos. Los textos pueden usar datos comunes con `{{site.campo}}`, por ejemplo `"Llamar al {{site.phoneDisplay}}"`. Los párrafos legales admiten HTML (`<strong>`).
+**Reseñas.** Se muestran en su castellano original en las tres páginas (marcadas con `lang="es"`), con una nota en catalán e inglés indicándolo.
 
-**Datos de la empresa, enlaces y barrios.** En `src/site.json`: un solo sitio para los tres idiomas (teléfono, email, NIF, domicilios, enlaces de Google, barrios de la zona de servicio, horario para Google).
+**Pop-up de idioma.** Solo está en `index.html` (castellano). Al entrar, `script.js` mira el idioma preferido del navegador (`navigator.languages`): si es catalán o inglés, abre un pop-up en ese idioma ofreciendo su versión («Et podem atendre en català» / «We can help you in English»). Si el navegador prefiere castellano no aparece. No se guarda nada (ni cookies ni `localStorage`), así que si el visitante lo cierra puede volver a verlo en otra visita. Los textos del pop-up están en el `<dialog id="lang-popup">` al final de `index.html`.
 
-**Reseñas.** En `src/site.json` → `reviews`. Se muestran en su idioma original en las tres versiones (en catalán e inglés aparece una nota indicándolo). `stars` es el número de estrellas (1–5).
+**Añadir un idioma.** Copiar `en/` a una carpeta nueva (p. ej. `fr/`), traducir, añadir su `hreflang` y su enlace en el selector de las demás páginas, una entrada en `sitemap.xml` y, si se quiere ofrecer en el pop-up, un bloque `<div class="lang-popup-msg" data-lang="fr">` en `index.html`.
 
-**Fotos de trabajos.** Archivo en `img/` y una entrada en `works.items` de cada idioma (`img`, `alt` y `caption`). Para cambiar una foto existente basta con sustituir el archivo manteniendo el nombre. Para que la web siga siendo rápida: unos 800 px de ancho, JPEG calidad ~60, sin metadatos (unos 50 KB por foto).
+## Cambios habituales
 
-**Estructura de la página.** En `src/template.html`. Sintaxis (subconjunto de Mustache):
+**Fotos de trabajos.** La galería usa `img/trabajo-N.jpg`. Para cambiar una foto basta con sustituir el archivo por otro con el mismo nombre. Para añadir o quitar fotos, edita los `<figure>` de la sección `TRABAJOS` en las tres páginas: `alt` es la descripción para buscadores y lectores de pantalla; `<figcaption>`, el texto visible. Para que la web siga siendo rápida: unos 800 px de ancho, JPEG calidad ~60 y sin metadatos, unos 50 KB por foto (por ejemplo con [squoosh.app](https://squoosh.app)).
 
-| Sintaxis | Uso |
+**Reseñas.** Se copian a mano desde el perfil de Google en la sección `OPINIONES` de las tres páginas. El botón «Dejar mi opinión» usa el enlace de *Leer reseñas → Conseguir más reseñas* del perfil de empresa.
+
+**Datos de la empresa.** Aparecen en la cabecera, el contacto, el pie, los textos legales y el bloque `application/ld+json` de cada página. Para cambiar uno, busca y reemplaza el valor actual en los tres `index.html` (en VS Code: buscar en todos los archivos, Ctrl+Shift+H):
+
+| Dato | Valor actual |
 |---|---|
-| `{{t.hero.title}}` | Texto escapado (de `i18n/`) |
-| `{{site.phone}}` | Dato común (de `site.json`) |
-| `{{{texto}}}` | HTML sin escapar |
-| `{{#lista}}…{{/lista}}` | Repite el bloque por cada elemento; dentro, `{{campo}}` o `{{.}}` |
-| `{{^dato}}…{{/dato}}` | Bloque que se muestra si el dato está vacío |
+| Teléfono en enlaces (`tel:`, `wa.me`) | `624134152` |
+| Teléfono visible | `624 134 152` |
+| Email | `jose@electricidadsana.es` |
+| Domicilio en el pie | `Gràcia, Barcelona` |
+| Domicilio en aviso legal y privacidad | `C/ Francisco Giner, 12, 08012 Barcelona` |
 
-Además de `t` y `site`, la plantilla recibe `lang`, `root` (`""` o `"../"` para rutas relativas), `url`, `languages`, `alternates`, `langHints`, `reviews`, `jsonLd` y `year` (ver `build.js`).
-
-**Añadir un idioma.** Crear `src/i18n/<código>.json` copiando `es.json`, traducirlo y añadir el código a `languages` en `src/site.json`. El generador crea la carpeta, el selector de idioma, las etiquetas `hreflang` y el sitemap.
-
-**Añadir una página nueva.** Hoy el generador produce una página por idioma desde `template.html`. Para crecer a varias páginas, el siguiente paso natural es una plantilla por página (`src/pages/*.html`) que comparta cabecera y pie como parciales.
-
-## Idiomas sin cookies
-
-El idioma va en la URL, no se guarda en el navegador. En la página en castellano, si el navegador del visitante está configurado en catalán o inglés, aparece un aviso discreto ofreciendo esa versión (`navigator.languages`, sin cookies ni `localStorage`). No hay redirecciones automáticas.
+Si cambias el teléfono, `img/og-image.jpg` también lo lleva escrito.
 
 ## Dominio
 

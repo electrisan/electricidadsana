@@ -121,12 +121,13 @@ p { margin: 0 0 1em; }
 .lang-switch a { display: inline-block; border: 0 !important; padding: .4rem .7rem !important; border-radius: 8px; font-size: .85rem; font-weight: 700; letter-spacing: .04em; color: var(--muted); }
 .lang-switch a[aria-current] { background: var(--navy); color: #fff; }
 
-/* Aviso «esta web también está en…» */
-.lang-hint { display: flex; align-items: center; justify-content: center; gap: .75rem; padding: .55rem 3rem .55rem 1rem; background: var(--yellow); color: var(--navy); font-size: .92rem; position: relative; text-align: center; }
-.lang-hint[hidden], .lang-hint-msg[hidden] { display: none; }
-.lang-hint p { margin: 0; }
-.lang-hint a { color: var(--navy); font-weight: 700; }
-.lang-hint-close { position: absolute; right: .5rem; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; border: 0; background: none; font-size: 1.4rem; line-height: 1; cursor: pointer; color: var(--navy); }
+/* Pop-up de idioma */
+.lang-popup { max-width: min(420px, 92vw); padding: 2rem 1.5rem 1.5rem; text-align: center; }
+.lang-popup h2 { font-size: 1.4rem; margin-bottom: .4rem; }
+.lang-popup p { color: var(--muted); }
+.lang-popup .lang-popup-icon { font-size: 2.2rem; margin: 0 0 .5rem; }
+.lang-popup-actions { display: flex; flex-direction: column; gap: .6rem; margin-top: 1.25rem; }
+.lang-popup-msg[hidden] { display: none; }
 
 @media (max-width: 420px) {
   .header-phone span { display: none; }
