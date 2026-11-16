@@ -1,0 +1,144 @@
+{
+  "langName": "Castellano",
+  "langShort": "ES",
+  "langHint": {
+    "text": "Esta web también está en castellano.",
+    "cta": "Verla en castellano"
+  },
+
+  "meta": {
+    "title": "Electricista en Barcelona | Electricidad Sana – Urgencias, Instalaciones, Reparaciones y Boletines",
+    "description": "Electricista autorizado en Barcelona y área metropolitana. Instalaciones, reformas, boletines, averías y urgencias 24 h. Presupuesto sin compromiso. Llama o escribe por WhatsApp.",
+    "ogLocale": "es_ES",
+    "ogTitle": "Electricista en Barcelona | Electricidad Sana",
+    "ogDescription": "Instalaciones, reparaciones, boletines y urgencias en Barcelona. Presupuesto sin compromiso."
+  },
+
+  "ui": {
+    "skip": "Saltar al contenido",
+    "homeLabel": "Electricidad Sana, inicio",
+    "navLabel": "Principal",
+    "menuOpen": "Abrir menú",
+    "menuClose": "Cerrar menú",
+    "callAria": "Llamar al {{site.phoneDisplay}}",
+    "close": "Cerrar",
+    "photoZoom": "Foto ampliada",
+    "quickContact": "Contacto rápido",
+    "language": "Idioma"
+  },
+
+  "nav": {
+    "services": "Servicios",
+    "zone": "Zona",
+    "works": "Trabajos",
+    "reviews": "Opiniones",
+    "contact": "Contacto"
+  },
+
+  "hero": {
+    "eyebrow": "Urgencias 24 h en Barcelona",
+    "title": "Tu electricista de confianza en Barcelona",
+    "lead": "Instalaciones seguras, reformas, boletines y reparación de averías. Instalador autorizado, presupuesto sin compromiso y trabajo garantizado.",
+    "call": "Llamar ahora",
+    "waMessage": "Hola, quiero pedir presupuesto",
+    "badges": ["Instalador autorizado", "Garantía por escrito", "Respuesta en menos de 1 h"]
+  },
+
+  "services": {
+    "eyebrow": "Servicios",
+    "title": "Todo lo que necesitas en electricidad",
+    "subtitle": "Para viviendas, comunidades, locales y oficinas.",
+    "items": [
+      { "icon": "⚡", "title": "Averías y urgencias 24 h", "text": "Apagones, saltos del diferencial, enchufes quemados o cortocircuitos. Llegamos rápido." },
+      { "icon": "🏠", "title": "Instalaciones y reformas", "text": "Instalación eléctrica completa o parcial para reformas de pisos, cocinas y baños." },
+      { "icon": "📄", "title": "Boletines y certificados", "text": "Certificado de instalación eléctrica (CIE / boletín) para alta de luz o aumento de potencia." },
+      { "icon": "🔌", "title": "Cuadros eléctricos", "text": "Sustitución y adecuación de cuadros, diferenciales y magnetotérmicos a normativa (REBT)." },
+      { "icon": "💡", "title": "Iluminación LED", "text": "Diseño e instalación de iluminación eficiente para ahorrar en la factura." },
+      { "icon": "🚗", "title": "Cargadores de coche eléctrico", "text": "Instalación de puntos de recarga en garajes particulares y comunitarios." }
+    ]
+  },
+
+  "zone": {
+    "eyebrow": "Zona de servicio",
+    "title": "Barcelona y área metropolitana",
+    "text": "Trabajamos en todos los distritos de Barcelona y en los municipios cercanos. Si no ves tu zona, consúltanos."
+  },
+
+  "works": {
+    "eyebrow": "Trabajos realizados",
+    "title": "Algunos de nuestros proyectos",
+    "subtitle": "Toca una foto para verla en grande.",
+    "items": [
+      { "img": "trabajo-1.jpg", "alt": "Instalación eléctrica completa en reforma de piso", "caption": "Cuadro eléctrico · Badalona" },
+      { "img": "trabajo-2.jpg", "alt": "Iluminación LED integrada en estantería de bar", "caption": "Iluminación LED · Eixample" },
+      { "img": "trabajo-3.jpg", "alt": "Últimos retoques en el Teatre Victòria antes del estreno del Mago Pop", "caption": "Teatre Victòria · Paral·lel" },
+      { "img": "trabajo-4.jpg", "alt": "Actuación urgente por riesgo de incendio en un hogar", "caption": "Intervención riesgo incendio · Sants" }
+    ]
+  },
+
+  "reviews": {
+    "eyebrow": "Opiniones",
+    "title": "Lo que dicen nuestros clientes",
+    "note": "",
+    "starsLabel": "{n} de 5 estrellas",
+    "all": "Ver todas las opiniones en Google",
+    "leave": "Dejar mi opinión"
+  },
+
+  "contact": {
+    "eyebrow": "Contacto",
+    "title": "Pide tu presupuesto gratis",
+    "text": "Llámanos o escríbenos por WhatsApp, cuéntanos qué necesitas y te respondemos lo antes posible.",
+    "phone": "Teléfono",
+    "email": "Email",
+    "hours": "Horario",
+    "hoursValue": "L–V 8:00–20:00 · S 9:00–14:00",
+    "urgent": "Urgencias, todos los días"
+  },
+
+  "fab": {
+    "waMessage": "Hola, necesito un electricista",
+    "waAria": "Escribir por WhatsApp",
+    "call": "Llamar",
+    "callAria": "Llamar por teléfono"
+  },
+
+  "footer": {
+    "tagline": "Electricista autorizado en Barcelona.",
+    "legalTitle": "Datos legales",
+    "owner": "Titular",
+    "nif": "NIF",
+    "address": "Domicilio",
+    "installer": "Empresa instaladora",
+    "infoTitle": "Información"
+  },
+
+  "legal": {
+    "notice": {
+      "title": "Aviso legal",
+      "paragraphs": [
+        "En cumplimiento de la Ley 34/2002, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se informa de que este sitio web, {{site.domain}}, es titularidad de <strong>{{site.owner}}</strong>, con NIF <strong>{{site.nif}}</strong> y domicilio en <strong>{{site.addressLegal}}</strong>. Email: {{site.email}}. Teléfono: {{site.phoneDisplay}}.",
+        "El acceso a este sitio web es gratuito y atribuye la condición de usuario. Los contenidos, textos e imágenes son propiedad del titular o se usan con autorización, y no pueden reproducirse sin permiso expreso.",
+        "El titular no se hace responsable del mal uso de los contenidos ni de los daños que pudieran derivarse del acceso a sitios de terceros enlazados desde esta web."
+      ]
+    },
+    "privacy": {
+      "title": "Política de privacidad",
+      "paragraphs": [
+        "<strong>Responsable:</strong> {{site.owner}}, NIF {{site.nif}}, {{site.addressLegal}}. Email: {{site.email}}.",
+        "<strong>Finalidad:</strong> atender las consultas y solicitudes de presupuesto que nos hagas por teléfono, WhatsApp o email y, en su caso, prestarte el servicio contratado.",
+        "<strong>Legitimación:</strong> tu consentimiento al contactarnos y, si nos contratas, la ejecución del contrato.",
+        "<strong>Conservación:</strong> el tiempo necesario para atender tu solicitud y cumplir las obligaciones legales.",
+        "<strong>Destinatarios:</strong> no se cederán datos a terceros salvo obligación legal o proveedores necesarios para el servicio (p. ej. correo electrónico).",
+        "<strong>Derechos:</strong> puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a {{site.email}}. También puedes reclamar ante la Agencia Española de Protección de Datos (www.aepd.es)."
+      ]
+    },
+    "cookies": {
+      "title": "Política de cookies",
+      "paragraphs": [
+        "Esta web no utiliza cookies propias ni de terceros, ni de analítica ni de publicidad, y no guarda ningún dato en tu navegador.",
+        "Si en el futuro se añaden herramientas de analítica, se actualizará esta política y se solicitará tu consentimiento."
+      ]
+    }
+  }
+}

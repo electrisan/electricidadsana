@@ -13,7 +13,7 @@
     toggle.addEventListener('click', function () {
       var open = nav.classList.toggle('open');
       toggle.setAttribute('aria-expanded', open);
-      toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+      toggle.setAttribute('aria-label', toggle.getAttribute(open ? 'data-label-close' : 'data-label-open'));
     });
     nav.addEventListener('click', function (e) {
       if (e.target.tagName === 'A') {
@@ -21,6 +21,22 @@
         toggle.setAttribute('aria-expanded', 'false');
       }
     });
+  }
+
+  // ---------- Aviso de idioma ----------
+  // Solo existe en la página del idioma por defecto. Usa el idioma del navegador
+  // (navigator.languages) y no guarda nada: ni cookies ni localStorage.
+  var hint = document.getElementById('lang-hint');
+  if (hint) {
+    var pageLang = document.documentElement.lang;
+    var prefs = navigator.languages || [navigator.language || ''];
+    for (var i = 0; i < prefs.length; i++) {
+      var code = String(prefs[i]).toLowerCase().split('-')[0];
+      if (code === pageLang) break; // prefiere el idioma de esta página: no mostrar nada
+      var msg = hint.querySelector('.lang-hint-msg[data-lang="' + code + '"]');
+      if (msg) { msg.hidden = false; hint.hidden = false; break; }
+    }
+    hint.querySelector('.lang-hint-close').addEventListener('click', function () { hint.hidden = true; });
   }
 
   // ---------- Diálogos (legales y visor) ----------

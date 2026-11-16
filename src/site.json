@@ -1,0 +1,51 @@
+{
+  "name": "Electricidad Sana",
+  "baseUrl": "https://electricidadsana.es",
+  "domain": "electricidadsana.es",
+  "defaultLang": "es",
+  "languages": ["es", "ca", "en"],
+
+  "phone": "+34624134152",
+  "phoneDisplay": "624 134 152",
+  "whatsapp": "34624134152",
+  "email": "jose@electricidadsana.es",
+
+  "owner": "Jose Luis Rodríguez",
+  "nif": "46818760Y",
+  "addressPublic": "Gràcia, Barcelona",
+  "addressLegal": "C/ Francisco Giner, 12, 08012 Barcelona",
+  "rasic": "RASIC 105002805",
+
+  "googleReviewsUrl": "https://share.google/vVMUuj6FsdGSoCw5d",
+  "googleWriteReviewUrl": "https://g.page/r/CXeFB-BFHDuAEBM/review",
+
+  "zones": [
+    "Ciutat Vella", "Eixample", "Sants-Montjuïc", "Les Corts",
+    "Sarrià-Sant Gervasi", "Gràcia", "Horta-Guinardó", "Nou Barris",
+    "Sant Andreu", "Sant Martí", "L'Hospitalet", "Badalona",
+    "Esplugues", "Cornellà", "Sant Cugat", "Sant Adrià"
+  ],
+
+  "areaServed": [
+    "Barcelona", "L'Hospitalet de Llobregat", "Badalona", "Sant Adrià de Besòs",
+    "Esplugues de Llobregat", "Cornellà de Llobregat", "Sant Cugat del Vallès"
+  ],
+
+  "openingHours": [
+    { "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "08:00", "closes": "20:00" },
+    { "dayOfWeek": ["Saturday"], "opens": "09:00", "closes": "14:00" }
+  ],
+
+  "reviews": [
+    {
+      "stars": 5,
+      "author": "Adrià A. R., Badalona",
+      "text": "Muy contento con el trabajo de Jose. Vino a casa a arreglarnos varios puntos de luz que teníamos averiados, nos revisó todo el sistema eléctrico para dejarlo en orden y además nos instaló una lámpara de techo. Todo impecable y sin complicaciones.<br><br>Muy buen precio y un trato genial, de esas personas que te transmiten confianza desde el primer momento. Sin duda lo recomiendo y volveremos a llamarle cuando lo necesitemos."
+    },
+    {
+      "stars": 5,
+      "author": "Eduardo S., Eixample Dret",
+      "text": "Un profesional como la copa de un pino. Lo recomiendo."
+    }
+  ]
+}

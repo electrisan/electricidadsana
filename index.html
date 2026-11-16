@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Archivo generado por build.js a partir de src/. No lo edites a mano: edita src/ y ejecuta "npm run build". -->
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -6,6 +7,10 @@
   <title>Electricista en Barcelona | Electricidad Sana – Urgencias, Instalaciones, Reparaciones y Boletines</title>
   <meta name="description" content="Electricista autorizado en Barcelona y área metropolitana. Instalaciones, reformas, boletines, averías y urgencias 24 h. Presupuesto sin compromiso. Llama o escribe por WhatsApp.">
   <link rel="canonical" href="https://electricidadsana.es/">
+  <link rel="alternate" hreflang="es" href="https://electricidadsana.es/">
+  <link rel="alternate" hreflang="ca" href="https://electricidadsana.es/ca/">
+  <link rel="alternate" hreflang="en" href="https://electricidadsana.es/en/">
+  <link rel="alternate" hreflang="x-default" href="https://electricidadsana.es/">
   <meta name="theme-color" content="#0b2545">
   <meta name="robots" content="index, follow">
 
@@ -23,32 +28,70 @@
 
   <!-- Datos estructurados para Google (negocio local) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Electrician",
-    "name": "Electricidad Sana",
-    "url": "https://electricidadsana.es/",
-    "logo": "https://electricidadsana.es/img/logo.png",
-    "image": "https://electricidadsana.es/img/og-image.jpg",
-    "telephone": "+34624134152",
-    "email": "jose@electricidadsana.es",
-    "priceRange": "€€",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Barcelona",
-      "addressRegion": "Cataluña",
-      "addressCountry": "ES"
+{
+  "@context": "https://schema.org",
+  "@type": "Electrician",
+  "name": "Electricidad Sana",
+  "url": "https://electricidadsana.es/",
+  "logo": "https://electricidadsana.es/img/logo.png",
+  "image": "https://electricidadsana.es/img/og-image.jpg",
+  "telephone": "+34624134152",
+  "email": "jose@electricidadsana.es",
+  "priceRange": "€€",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Barcelona",
+    "addressRegion": "Cataluña",
+    "addressCountry": "ES"
+  },
+  "areaServed": [
+    "Barcelona",
+    "L'Hospitalet de Llobregat",
+    "Badalona",
+    "Sant Adrià de Besòs",
+    "Esplugues de Llobregat",
+    "Cornellà de Llobregat",
+    "Sant Cugat del Vallès"
+  ],
+  "knowsLanguage": [
+    "es",
+    "ca",
+    "en"
+  ],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "08:00",
+      "closes": "20:00"
     },
-    "areaServed": ["Barcelona", "L'Hospitalet de Llobregat", "Badalona", "Sant Adrià de Besòs", "Esplugues de Llobregat", "Cornellà de Llobregat", "Sant Cugat del Vallès"],
-    "openingHoursSpecification": [
-      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "20:00" },
-      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "09:00", "closes": "14:00" }
-    ]
-  }
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Saturday"
+      ],
+      "opens": "09:00",
+      "closes": "14:00"
+    }
+  ]
+}
   </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <!-- Aviso de idioma: se muestra con JS si el navegador prefiere otro idioma de la web. No guarda nada. -->
+  <div class="lang-hint" id="lang-hint" hidden>
+    <p class="lang-hint-msg" data-lang="ca" lang="ca" hidden>Aquesta web també està en català. <a href="ca/" hreflang="ca">Veure-la en català →</a></p>
+    <p class="lang-hint-msg" data-lang="en" lang="en" hidden>This website is also available in English. <a href="en/" hreflang="en">View in English →</a></p>
+    <button class="lang-hint-close" type="button" aria-label="Cerrar">×</button>
+  </div>
 
   <!-- ========== CABECERA ========== -->
   <header class="site-header" id="top">
@@ -66,6 +109,11 @@
           <li><a href="#opiniones">Opiniones</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
+        <ul class="lang-switch" aria-label="Idioma">
+          <li><a href="./" hreflang="es" lang="es" title="Castellano" aria-current="true">ES</a></li>
+          <li><a href="ca/" hreflang="ca" lang="ca" title="Català">CA</a></li>
+          <li><a href="en/" hreflang="en" lang="en" title="English">EN</a></li>
+        </ul>
       </nav>
 
       <a class="header-phone" href="tel:+34624134152" aria-label="Llamar al 624 134 152">
@@ -73,7 +121,7 @@
         <span>624 134 152</span>
       </a>
 
-      <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú" data-label-open="Abrir menú" data-label-close="Cerrar menú">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -155,10 +203,22 @@
           <h2>Barcelona y área metropolitana</h2>
           <p>Trabajamos en todos los distritos de Barcelona y en los municipios cercanos. Si no ves tu zona, consúltanos.</p>
           <ul class="zone-list">
-            <li>Ciutat Vella</li><li>Eixample</li><li>Sants-Montjuïc</li><li>Les Corts</li>
-            <li>Sarrià-Sant Gervasi</li><li>Gràcia</li><li>Horta-Guinardó</li><li>Nou Barris</li>
-            <li>Sant Andreu</li><li>Sant Martí</li><li>L'Hospitalet</li><li>Badalona</li>
-            <li>Esplugues</li><li>Cornellà</li><li>Sant Cugat</li><li>Sant Adrià</li>
+            <li>Ciutat Vella</li>
+            <li>Eixample</li>
+            <li>Sants-Montjuïc</li>
+            <li>Les Corts</li>
+            <li>Sarrià-Sant Gervasi</li>
+            <li>Gràcia</li>
+            <li>Horta-Guinardó</li>
+            <li>Nou Barris</li>
+            <li>Sant Andreu</li>
+            <li>Sant Martí</li>
+            <li>L&#39;Hospitalet</li>
+            <li>Badalona</li>
+            <li>Esplugues</li>
+            <li>Cornellà</li>
+            <li>Sant Cugat</li>
+            <li>Sant Adrià</li>
           </ul>
         </div>
       </div>
@@ -190,21 +250,18 @@
           <h2>Lo que dicen nuestros clientes</h2>
         </header>
 
-        <!-- IMPORTANTE: copia aquí 3 reseñas reales de tu perfil de Google Maps (texto, nombre de pila e inicial del apellido) -->
         <div class="grid reviews">
-          <blockquote class="card review">
+          <blockquote class="card review" lang="es">
             <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
-            <p>“Muy contento con el trabajo de Jose. Vino a casa a arreglarnos varios puntos de luz que teníamos averiados, nos revisó todo el sistema eléctrico para dejarlo en orden y además nos instaló una lámpara de techo. Todo impecable y sin complicaciones.<br><br>
-Muy buen precio y un trato genial, de esas personas que te transmiten confianza desde el primer momento. Sin duda lo recomiendo y volveremos a llamarle cuando lo necesitemos.”</p>
+            <p>“Muy contento con el trabajo de Jose. Vino a casa a arreglarnos varios puntos de luz que teníamos averiados, nos revisó todo el sistema eléctrico para dejarlo en orden y además nos instaló una lámpara de techo. Todo impecable y sin complicaciones.<br><br>Muy buen precio y un trato genial, de esas personas que te transmiten confianza desde el primer momento. Sin duda lo recomiendo y volveremos a llamarle cuando lo necesitemos.”</p>
             <footer>— Adrià A. R., Badalona</footer>
           </blockquote>
-          <blockquote class="card review">
+          <blockquote class="card review" lang="es">
             <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
             <p>“Un profesional como la copa de un pino. Lo recomiendo.”</p>
             <footer>— Eduardo S., Eixample Dret</footer>
           </blockquote>
         </div>
-        <!-- Pon aquí tus dos enlaces de Google (ver README, sección «Reseñas de Google») -->
         <div class="reviews-cta">
           <a class="btn btn-outline" href="https://share.google/vVMUuj6FsdGSoCw5d" target="_blank" rel="noopener">Ver todas las opiniones en Google</a>
           <a class="btn btn-primary" href="https://g.page/r/CXeFB-BFHDuAEBM/review" target="_blank" rel="noopener">Dejar mi opinión</a>
@@ -226,7 +283,6 @@ Muy buen precio y un trato genial, de esas personas que te transmiten confianza 
             <li><strong>Horario:</strong> L–V 8:00–20:00 · S 9:00–14:00<br><small>Urgencias, todos los días</small></li>
           </ul>
         </div>
-
       </div>
     </section>
   </main>
@@ -283,7 +339,6 @@ Muy buen precio y un trato genial, de esas personas que te transmiten confianza 
   </dialog>
 
   <!-- ========== TEXTOS LEGALES ========== -->
-  <!-- Revisa estos textos con tu gestor/asesor: son una base orientativa (LSSI-CE y RGPD). -->
   <dialog class="legal" id="aviso-legal" aria-labelledby="t-aviso">
     <button class="dialog-close" type="button" aria-label="Cerrar">×</button>
     <h2 id="t-aviso">Aviso legal</h2>
@@ -306,7 +361,7 @@ Muy buen precio y un trato genial, de esas personas que te transmiten confianza 
   <dialog class="legal" id="cookies" aria-labelledby="t-cookies">
     <button class="dialog-close" type="button" aria-label="Cerrar">×</button>
     <h2 id="t-cookies">Política de cookies</h2>
-    <p>Esta web no utiliza cookies propias ni de terceros, ni de analítica ni de publicidad.</p>
+    <p>Esta web no utiliza cookies propias ni de terceros, ni de analítica ni de publicidad, y no guarda ningún dato en tu navegador.</p>
     <p>Si en el futuro se añaden herramientas de analítica, se actualizará esta política y se solicitará tu consentimiento.</p>
   </dialog>
 

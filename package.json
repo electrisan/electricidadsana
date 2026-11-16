@@ -1,0 +1,12 @@
+{
+  "name": "electricidadsana",
+  "private": true,
+  "description": "Web de Electricidad Sana (electricista en Barcelona). Generador estático sin dependencias.",
+  "license": "UNLICENSED",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "build": "node build.js",
+    "watch": "node build.js --watch",
+    "dev": "node build.js --serve"
+  }
+}
