@@ -138,7 +138,7 @@ function wav(f,ms,vol){const sr=22050,n=Math.floor(sr*ms/1000),b=new ArrayBuffer
 /* Desbloqueo del sonido: en táctil solo se puede al levantar el dedo; en iPhone, un <audio>
    mudo en bucle pone el móvil en modo "reproducción" y así suena con el interruptor de silencio. */
 function unlockAudio(){
-  sndTouched=true;
+  sndTouched=true; poolUnlock();
   const a=audio(); if(!a) return;
   try{ if(navigator.audioSession) navigator.audioSession.type='playback'; }catch(e){}
   try{ if(!silentEl){ silentEl=new Audio(wav(0,500,0)); silentEl.loop=true; silentEl.setAttribute('playsinline',''); } silentEl.play().catch(()=>{}); }catch(e){}
@@ -167,10 +167,27 @@ function toneWav(f,ms,wave,vol,flat){
     v.setInt16(44+i*2,x*amp*env*30000,true);
   }
   url=URL.createObjectURL(new Blob([b],{type:'audio/wav'}));
-  if(wavCache.size<300) wavCache.set(key,url);
+  // caché acotada: al llenarse se suelta la más antigua (antes, pasados 300 sonidos distintos, cada pitido era un blob nuevo sin liberar)
+  if(wavCache.size>=400){ const old=wavCache.keys().next().value; URL.revokeObjectURL(wavCache.get(old)); wavCache.delete(old); }
+  wavCache.set(key,url);
   return url;
 }
-function playWav(url){ try{ const e=new Audio(url); e.play().catch(()=>{}); }catch(x){} }
+/* Reproductores fijos y reutilizados. Antes cada pitido creaba un new Audio(): en el móvil los reproductores se
+   acumulan hasta el GC, el navegador llega a su tope (los pitidos siguientes callan; las ráfagas de las perlas, las
+   primeras) y cada creación pesa más, así que el hilo principal se atasca y los botones van con retraso. */
+const POOL_N=8, pool=[]; let poolUnlocked=false, silentUrl=null;
+function poolEl(){
+  if(!pool.length) for(let k=0;k<POOL_N;k++){ const e=new Audio(); e.preload='auto'; e.setAttribute('playsinline',''); e._t=0; pool.push(e); }
+  let best=pool[0];                                  // uno libre; si no, el que empezó hace más
+  for(const e of pool){ if(e.paused||e.ended) return e; if(e._t<best._t) best=e; }
+  return best;
+}
+function poolUnlock(){                               // iOS: cada <audio> tiene que sonar una vez dentro de un gesto
+  if(poolUnlocked) return; poolUnlocked=true; poolEl();
+  if(!silentUrl) silentUrl=wav(0,50,0);
+  for(const e of pool){ try{ e.src=silentUrl; e.play().catch(()=>{}); }catch(x){} }
+}
+function playWav(url){ try{ const e=poolEl(); e._t=performance.now(); if(e.src!==url) e.src=url; else e.currentTime=0; e.play().catch(()=>{}); }catch(x){} }
 function tone(at,f,ms,wave,vol,flat){
   if(outMode==='compat'){
     tonesOk++; const url=toneWav(f,ms,wave,vol,flat), d=at-performance.now();
